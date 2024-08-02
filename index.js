@@ -18,6 +18,11 @@ app.get('/encode/:text', (req, res) => {
   return res.send(`<h1>${encodedText}</h1>`);
 });
 
+app.get('/decode/:text', (req, res) => {
+  const decodedText = Vigenere.Decipher(password).crypt(req.params.text);
+  return res.send(`<h1>${decodedText}</h1>`);
+});
+
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
 })
